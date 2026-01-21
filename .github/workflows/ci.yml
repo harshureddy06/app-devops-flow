@@ -22,7 +22,9 @@ jobs:
         uses: |
           pip install -r requirements.txt
 
-      - name: check if app starts
+      - name: check Flask app import
         run: |
-          export FLASK_APP=app:app
-          flask run --help
+          python - <<EOF
+          from app import app
+          print("Flask app importted successfully")
+          EOF
