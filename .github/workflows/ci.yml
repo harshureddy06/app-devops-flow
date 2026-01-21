@@ -3,14 +3,12 @@ name: Manual CI
 on:
   workflow_dispatch:
 
-
 jobs:
   check-app:
     runs-on: ubuntu-latest
 
-
     steps:
-      - name: checkout code
+      - name: Checkout code
         uses: actions/checkout@v4
 
       - name: Set up Python
@@ -19,12 +17,13 @@ jobs:
           python-version: "3.10"
 
       - name: Install dependencies
-        uses: |
+        run: |
           pip install -r requirements.txt
 
-      - name: check Flask app import
+      - name: Verify Flask app can be imported
         run: |
           python - <<EOF
           from app import app
-          print("Flask app importted successfully")
+          print("Flask app imported successfully")
           EOF
+
