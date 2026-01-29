@@ -22,7 +22,7 @@ jobs:
           key: ${{ secrets.EC2_SSH_KEY }}
           script: |
             export KUBECONFIG=$HOME/.kube/config
-            cd k8s
+            cd /home/ubuntu/app-devops-flow/k8s
             kubectl apply -f configmap.yml
             kubectl apply -f deployment.yml
             kubectl apply -f service.yml
